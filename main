@@ -1,0 +1,29 @@
+package com.mycompany.mavenproject2;
+
+import java.util.Scanner;
+
+
+public class Mavenproject2 {
+
+    public static void main(String[] args) {
+        System.out.println("Шандиров Идар, РИБО-02-21, вариант №4");
+        Scanner in = new Scanner(System.in);
+        
+        
+        String name = in.nextLine();
+        String kind = in.nextLine();
+        int girth = in.nextInt();
+        int height = in.nextInt();
+        int width = in.nextInt();
+        
+        Plant plant = new Plant(name, kind, girth, height, width);
+        String path = "c:\\JavaExternalize.txt";
+        SaverRunnable sr = new SaverRunnable(plant, path);
+        Thread th = new Thread(sr);
+        th.start();
+        
+    }
+        
+    
+   
+}
