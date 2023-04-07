@@ -1,0 +1,64 @@
+
+package com.mycompany.mavenproject2;
+
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
+public class Plant implements Externalizable{
+    String name;
+    String kind;
+    float girth;
+    float height;
+    float width; 
+
+    public Plant(String name, String kind, float girth, float height, float width) {
+        this.name = name;
+        this.kind = kind;
+        this.girth = girth;
+        this.height = height;
+        this.width = width;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public float getGirth() {
+        return girth;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+    
+    
+
+    public Plant() {
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(this.getName());
+        out.writeObject(this.getKind());
+        out.writeObject(this.getGirth());
+        out.writeObject(this.getHeight());
+        out.writeObject(this.getWidth());
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        
+    }
+    
+    
+}
