@@ -1,0 +1,37 @@
+
+package com.mycompany.mavenproject2;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class SaverRunnable implements Runnable {
+    
+    
+    Plant plant;
+    private String path;
+
+    public SaverRunnable(Plant plant, String path) {
+        this.plant = plant;
+        this.path = path;
+    }
+    
+    @Override
+    public void run() {
+        
+        if (plant != null && this.path != null) {
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(this.path);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(plant);
+                oos.close();
+                System.out.print("Success serialization obj Plant");
+            }
+            catch(IOException ex) {
+                System.out.print("Error saving object to path: " + this.path);
+            }
+        }
+    }
+    
+}
